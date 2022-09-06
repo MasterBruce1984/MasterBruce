@@ -1,0 +1,61 @@
+/*	-WHAT IS THIS?-
+	This file adds optional material to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+	Import this file using the "Add Extra Materials" bookmark.
+
+	-KEEP IN MIND-
+	It is recommended to enter the code in a fresh sheet before adding any other information (i.e. before making your character with it).
+*/
+
+/*	-INFORMATION-
+	Subject:	Race
+	Effect:		This script adds a player race, called "Drider"
+				This is taken from DanDwiki (https://www.dandwiki.com/wiki/Drider_(5e_Race))
+				Please note that DanDwiki is renowned for having very unbalanced content and that it can be edited by anyone at any time
+	Code by:	MorePurpleMoreBetter
+	Date:		2022-09-06 (sheet v12.998)
+*/
+
+var iFileName = "Drider.js";
+RequiredSheetVersion(12.999);
+
+SourceList["DanDw"] = {
+	name : "D\u0026D Wiki",
+	abbreviation : "D\u0026Dwiki",
+	group : "homebrew",
+	url : "https://www.dandwiki.com/wiki/"
+};
+
+RaceList["drider"] = { 
+	regExpSearch : /drider/i,
+	name : "Drider", 
+	sortname : "Drider",
+	source : ["DandDw", 0],
+	plural : "Driders",
+	size : 3, 
+	speed : {
+		walk : { spd : 30, enc : 20 }, 
+		climb : { spd : 30, enc : 20 },
+	},
+	languageProfs : ["Common","Elvish","Undercommon"],
+	vision : [["Darkvision", 120], ["Sunlight Sensitivity", 0]],
+	savetxt : {
+		text : ["Magic can't put me to sleep"], 
+		adv_vs : ["charmed"] 
+	},
+	weaponProfs : [false, false, ["rapier", "shortsword", "hand crossbow"]], 
+	skills : ["Perception"],
+	age : " typically claim adulthood around age 100 and can live to be 750 years old",
+	height : " range from under 7 to almost 9 feet tall (7'0\" + 2d10\")",
+	weight : " weigh around 500 lb (300 + 2d10 \xD7 2d10 lb)",
+	scores : [1, 1, 1, 0, 0, 0],
+	improvements : "Drider: +1 Strength, +1 Dexterity, +1 Charisma;",
+	trait : "Drider (+1 Strength, +1 Dexterity, +1 Charisma)\n   Arachnid Build: You count as one size larger when determining your carrying capacity and the weight you can push or drag.\n   Sunlight Sensitivity: Disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when I or what I am trying to attack/perceive is in direct sunlight.\n   Poisonous Bite: As a bonus action, you can bite a creature within 5 feet of you forcing them to make a Constitution saving throw or be poisoned until the end of your next turn. The DC for this saving throw is equal to 8 + your Constitution modifier + your proficiency bonus, and you can't use this trait again until you finish a short or long rest.\nWebber: You can cast the web spell once with this trait, requiring no material components, and you regain the ability to cast it this way when you finish a long rest. Constitution is your spellcasting ability for this spell.",
+	abilitySave : 3,
+	spellcastingAbility : 3,
+	spellcastingBonus : {
+		name : "Webber (level 1)",
+		spells : ["web"],
+		selection : ["web"],
+		firstCol : "oncelr",
+	}
+}; 
